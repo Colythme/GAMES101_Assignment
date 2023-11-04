@@ -257,3 +257,6 @@ for (int x = x_min; x <= x_max; x ++)
     }
 ```
 
+#### 5 - Result
+
+<img src="Assignment2/Assignment2/Assignment2/Triangles_final.jpg" style="zoom: 50%;" />
