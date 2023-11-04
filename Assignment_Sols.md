@@ -66,6 +66,12 @@ $$
   0 & 0 & \frac2{n - f} & 0 \\
   0 & 0 & 0 & 1
   \end{bmatrix}
+  \begin{bmatrix}
+  1 & 0 & 0 & - \frac{r + l}2 \\
+  0 & 1 & 0 & - \frac{t + b}2 \\
+  0 & 0 & 1 & - \frac{n + f}2 \\
+  0 & 0 & 0 & 1
+  \end{bmatrix}
   ```
 
 It is easy to do the first part, but finds $l, r, b, t$ unknown to do the second one
