@@ -8,7 +8,7 @@ The assignment is all about formula implementation. It includes two parts,
 - Construct the perspective projection matrix
 
 According to what taught in GAMES 101 lectures, the formula for the first part is,
-$$
+```math
 R_z (\alpha) = 
 \begin{pmatrix}
 \cos \alpha & - \sin \alpha & 0 & 0 \\
@@ -16,7 +16,7 @@ R_z (\alpha) =
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
 \end{pmatrix}
-$$
+```
 Therefore, the code should be (remember to transform the input angle from degree to radius),
 
 ```c++
