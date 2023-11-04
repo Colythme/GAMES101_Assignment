@@ -58,7 +58,7 @@ n & 0 & 0 & 0 \\
 $$
 
 - Do orthographic projection transformation (translate & scale)
-  $$
+  ```math
   M_{ortho} =
   \begin{bmatrix}
   \frac2{r - l} & 0 & 0 & 0 \\
@@ -72,7 +72,7 @@ $$
   0 & 0 & 1 & - \frac{n + f}2 \\
   0 & 0 & 0 & 1
   \end{bmatrix}
-  $$
+  ```
 
 It is easy to do the first part, but finds $l, r, b, t$ unknown to do the second one
 
