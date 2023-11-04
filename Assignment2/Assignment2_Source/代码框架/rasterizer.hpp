@@ -91,11 +91,15 @@ namespace rst
         std::map<int, std::vector<Eigen::Vector3f>> col_buf;
 
         std::vector<Eigen::Vector3f> frame_buf;
+        std::vector<Eigen::Vector3f> ss_frame_buf; // Supersamepling
 
         std::vector<float> depth_buf;
+        std::vector<float> ss_depth_buf;
         int get_index(int x, int y);
+        int ss_get_index (int x, int y, int id);
 
         int width, height;
+        int ss_width, ss_height;
 
         int next_id = 0;
         int get_next_id() { return next_id++; }

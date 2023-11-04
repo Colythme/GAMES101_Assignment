@@ -7,6 +7,8 @@
 
 constexpr double MY_PI = 3.1415926;
 
+inline double DEG2RAD (float angle) { return angle / 180.0f * MY_PI; }
+
 Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 {
     Eigen::Matrix4f view = Eigen::Matrix4f::Identity();
@@ -32,6 +34,30 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio, float z
 {
     // TODO: Copy-paste your implementation from the previous assignment.
     Eigen::Matrix4f projection;
+
+    Eigen::Matrix4f persp2orth_mat;
+    persp2orth_mat << zNear, 0, 0, 0,
+                      0, zNear, 0, 0,
+                      0, 0, zNear + zFar, - zNear * zFar,
+                      0, 0, 1, 0;
+
+    float t = - zNear * tan (DEG2RAD (eye_fov) / 2.0f);
+    float b = - t;
+    float r = t * aspect_ratio;
+    float l = - r;
+
+    Eigen::Matrix4f orth_translate_mat, orth_scale_mat;
+    orth_translate_mat << 1, 0, 0, - (r + l) / 2,
+                      0, 1, 0, - (t + b) / 2,
+                      0, 0, 1, - (zNear + zFar) / 2,
+                      0, 0, 0, 1;
+    orth_scale_mat << 2 / (r - l), 0, 0, 0,
+                      0, 2 / (t - b), 0, 0,
+                      0, 0, 2 / (zNear - zFar), 0,
+                      0, 0, 0, 1;
+    Eigen::Matrix4f orth_mat = orth_scale_mat * orth_translate_mat;
+
+    projection = orth_mat * persp2orth_mat;
 
     return projection;
 }
@@ -118,6 +144,7 @@ int main(int argc, const char** argv)
         image.convertTo(image, CV_8UC3, 1.0f);
         cv::cvtColor(image, image, cv::COLOR_RGB2BGR);
         cv::imshow("image", image);
+        cv::imwrite ("Triangles.jpg", image);
         key = cv::waitKey(10);
 
         std::cout << "frame count: " << frame_count++ << '\n';
