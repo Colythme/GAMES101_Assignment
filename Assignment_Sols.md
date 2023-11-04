@@ -259,4 +259,4 @@ for (int x = x_min; x <= x_max; x ++)
 
 #### 5 - Result
 
-<img src="https://ooo.0x0.ooo/2023/11/04/ONve9t.jpg" style="zoom:25%;" />
+<img src="https://ooo.0x0.ooo/2023/11/04/ONve9t.jpg" style="zoom: 50%;" />
